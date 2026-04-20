@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Search, Code2, Globe, Sparkles, Layout, 
-  ShieldCheck, Smartphone, Zap, ArrowRight, Filter 
+  ShieldCheck, Smartphone, Zap, ArrowRight, Link as LinkIcon 
 } from "lucide-react";
 
 const CATEGORIES = ["All", "Development", "Security", "Design", "Optimization"];
@@ -16,7 +17,8 @@ const TOOLS_DATA = [
     desc: "Scan your repository for security flaws and performance bottlenecks in seconds.",
     category: "Security",
     icon: <ShieldCheck className="w-6 h-6" />,
-    stats: "1.2k+ Weekly Uses"
+    stats: "1.2k+ Weekly Uses",
+    href: "/tools/code-auditor"
   },
   {
     id: 2,
@@ -24,7 +26,8 @@ const TOOLS_DATA = [
     desc: "Instant worldwide distribution for your static assets with automated compression.",
     category: "Optimization",
     icon: <Zap className="w-6 h-6" />,
-    stats: "99.9% Uptime"
+    stats: "99.9% Uptime",
+    href: "/tools/edge-deploy"
   },
   {
     id: 3,
@@ -32,7 +35,8 @@ const TOOLS_DATA = [
     desc: "Generate high-ranking metadata and JSON-LD schemas using live SERP data.",
     category: "Development",
     icon: <Globe className="w-6 h-6" />,
-    stats: "Top Rated"
+    stats: "Top Rated",
+    href: "/tools/seo-lab"
   },
   {
     id: 4,
@@ -40,7 +44,8 @@ const TOOLS_DATA = [
     desc: "Visual tool to generate complex Tailwind CSS layouts with drag-and-drop ease.",
     category: "Design",
     icon: <Layout className="w-6 h-6" />,
-    stats: "Designer's Choice"
+    stats: "Designer's Choice",
+    href: "/tools/grid-builder"
   },
   {
     id: 5,
@@ -48,7 +53,8 @@ const TOOLS_DATA = [
     desc: "Generate custom, type-safe React hooks for common state management patterns.",
     category: "Development",
     icon: <Code2 className="w-6 h-6" />,
-    stats: "Open Source"
+    stats: "Open Source",
+    href: "/tools/hook-smith"
   },
   {
     id: 6,
@@ -56,7 +62,17 @@ const TOOLS_DATA = [
     desc: "Test your site on 50+ virtual mobile devices to ensure perfect responsiveness.",
     category: "Design",
     icon: <Smartphone className="w-6 h-6" />,
-    stats: "v2.0 Live"
+    stats: "v2.0 Live",
+    href: "/tools/mobile-sim"
+  },
+  {
+    id: 7,
+    title: "Slug Generator",
+    desc: "Convert your titles into URL-friendly slugs instantly.",
+    category: "Development",
+    icon: <LinkIcon className="w-6 h-6" />,
+    stats: "New",
+    href: "/tools/slug-generator"
   }
 ];
 
@@ -72,27 +88,21 @@ export default function ToolsPage() {
 
   return (
     <div className="min-h-screen bg-brand-bg text-brand-main pt-32 pb-20 px-6">
-      {/* --- HERO SECTION --- */}
       <div className="max-w-7xl mx-auto text-center mb-20">
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-5xl md:text-7xl font-black tracking-tight mb-6"
-        >
+        <h1 className="text-5xl md:text-7xl font-black tracking-tight mb-6">
           Powerful <span className="text-brand-primary">Utilities.</span>
-        </motion.h1>
+        </h1>
         <p className="text-brand-muted text-lg max-w-xl mx-auto mb-12">
           A curated collection of professional tools designed to accelerate your development workflow.
         </p>
 
-        {/* --- SEARCH & FILTERS --- */}
         <div className="max-w-2xl mx-auto space-y-6">
           <div className="relative group">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-brand-muted group-focus-within:text-brand-primary transition-colors" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-brand-muted" />
             <input 
               type="text"
-              placeholder="Search for a tool (e.g. 'AI', 'React')..."
-              className="w-full bg-white border border-brand-border rounded-2xl py-4 pl-12 pr-4 focus:outline-none focus:ring-4 focus:ring-brand-primary/5 focus:border-brand-primary transition-all shadow-sm"
+              placeholder="Search for a tool..."
+              className="w-full bg-white border border-brand-border rounded-2xl py-4 pl-12 pr-4 outline-none focus:ring-4 focus:ring-brand-primary/5 focus:border-brand-primary transition-all shadow-sm"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -106,7 +116,7 @@ export default function ToolsPage() {
                 className={`px-6 py-2 rounded-full text-sm font-bold transition-all ${
                   activeCategory === cat 
                     ? "bg-brand-primary text-white shadow-lg shadow-blue-500/20" 
-                    : "bg-white border border-brand-border text-brand-muted hover:border-brand-primary hover:text-brand-primary"
+                    : "bg-white border border-brand-border text-brand-muted hover:border-brand-primary"
                 }`}
               >
                 {cat}
@@ -116,7 +126,6 @@ export default function ToolsPage() {
         </div>
       </div>
 
-      {/* --- TOOLS GRID --- */}
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence mode="popLayout">
@@ -127,51 +136,33 @@ export default function ToolsPage() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.2 }}
                 className="group bg-brand-card border border-brand-border p-8 rounded-[2.5rem] hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex flex-col justify-between"
               >
                 <div>
                   <div className="flex justify-between items-start mb-6">
-                    <div className="w-14 h-14 bg-brand-bg rounded-2xl flex items-center justify-center text-brand-primary border border-brand-border group-hover:bg-brand-primary group-hover:text-white transition-colors duration-300">
+                    <div className="w-14 h-14 bg-brand-bg rounded-2xl flex items-center justify-center text-brand-primary border border-brand-border group-hover:bg-brand-primary group-hover:text-white transition-colors">
                       {tool.icon}
                     </div>
                     <span className="text-[10px] font-black uppercase tracking-widest text-brand-muted/60">
                       {tool.stats}
                     </span>
                   </div>
-                  <h3 className="text-2xl font-black mb-3 text-brand-main">
-                    {tool.title}
-                  </h3>
-                  <p className="text-brand-muted text-sm leading-relaxed mb-8">
-                    {tool.desc}
-                  </p>
+                  <h3 className="text-2xl font-black mb-3">{tool.title}</h3>
+                  <p className="text-brand-muted text-sm leading-relaxed mb-8">{tool.desc}</p>
                 </div>
 
-                <div className="flex items-center justify-between pt-6 border-t border-brand-border/50">
+                <Link href={tool.href} className="flex items-center justify-between pt-6 border-t border-brand-border/50 group/link">
                   <span className="text-xs font-bold px-3 py-1 bg-slate-100 rounded-lg text-slate-500 uppercase tracking-tighter">
                     {tool.category}
                   </span>
-                  <button className="flex items-center gap-2 text-sm font-black text-brand-primary group-hover:translate-x-1 transition-transform">
+                  <div className="flex items-center gap-2 text-sm font-black text-brand-primary group-hover/link:translate-x-1 transition-transform">
                     Open Tool <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </AnimatePresence>
         </div>
-
-        {filteredTools.length === 0 && (
-          <div className="text-center py-20">
-            <Sparkles className="w-12 h-12 text-brand-muted/30 mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-brand-muted">No tools found matching your search.</h3>
-            <button 
-              onClick={() => {setSearchQuery(""); setActiveCategory("All")}}
-              className="mt-4 text-brand-primary font-bold hover:underline"
-            >
-              Clear all filters
-            </button>
-          </div>
-        )}
       </div>
     </div>
   );
