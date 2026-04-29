@@ -25,6 +25,7 @@ export default function RootLayout({
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Tools", href: "/tools" },
+    { name: "Extensions", href: "/chrome-extensions" }, // New Link
     { name: "Blogs", href: "/blogs" },
     { name: "Contact Us", href: "/contact" },
   ];
