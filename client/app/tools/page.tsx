@@ -5,20 +5,22 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Search, Code2, Globe, Sparkles, Layout, 
-  ShieldCheck, Smartphone, Zap, ArrowRight, Link as LinkIcon 
+  ShieldCheck, Smartphone, Zap, ArrowRight, Link as LinkIcon, 
+  ImageIcon
 } from "lucide-react";
 
+// Change this:
 const CATEGORIES = ["All", "Development", "Security", "Design", "Optimization"];
 
 const TOOLS_DATA = [
   {
-    id: 1,
-    title: "AI Code Auditor",
-    desc: "Scan your repository for security flaws and performance bottlenecks in seconds.",
-    category: "Security",
-    icon: <ShieldCheck className="w-6 h-6" />,
-    stats: "1.2k+ Weekly Uses",
-    href: "/tools/code-auditor"
+    id: 1, // Or your preferred index
+    title: "Image Converter",
+    desc: "Convert images between PNG, JPG, and WebP instantly using secure client-side processing.",
+    category: "Utility",
+    icon: <ImageIcon className="w-6 h-6" />,
+    stats: "New Tool",
+    href: "/tools/image-converter"
   },
   {
     id: 2,

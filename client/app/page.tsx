@@ -26,10 +26,7 @@ export default function LandingPage() {
   return (
     <div className="bg-[#fcfcfd] min-h-screen text-slate-900 font-sans">
       
-      {/* 1. ANNOUNCEMENT BAR */}
-      <div className="bg-brand-primary py-2 px-6 text-center text-white text-xs font-bold tracking-widest uppercase">
-        ✨ Tailwind v4 Support is now live across all auditing tools
-      </div>
+      
 
       {/* 2. NAVIGATION (Simplified for Landing) */}
       {/* <nav className="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">

@@ -1,9 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',   // IMPORTANT
+  output: 'export',
   images: {
-    unoptimized: true // required for static export
-  }
-};
+    unoptimized: true, // This is the critical line for Netlify/Static exports
+  },
+  devIndicators: {
+    appIsrStatus: false,   // Disables the ISR status indicator
+    buildActivity: false,  // Disables the build activity indicator
+  },
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

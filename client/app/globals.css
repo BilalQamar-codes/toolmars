@@ -42,3 +42,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   transition: background-color 0.3s ease;
 }
+
+/* Replace .banner-class-name with the actual class you find */
+.banner-class-name {
+  display: none !important;
+}
+/* Target the Next.js dev-overlay announcement specifically */
+nextjs-portal {
+  display: none !important;
+}
