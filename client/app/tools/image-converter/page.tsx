@@ -76,7 +76,17 @@ useEffect(() => {
           const extension = format.split('/')[1]?.replace('jpeg', 'jpg') || 'png';
 
           if (format === "image/svg+xml") {
-            const svgString = `<svg xmlns="http://www.w3.org/2000/svg" width="${img.width}" height="${img.height}"><image width="100%" height="100%" href="${item.preview}" /></svg>`;
+            // Set canvas to image dimensions for embedding
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            
+            // Convert canvas to base64 PNG data
+            const imageData = canvas.toDataURL("image/png");
+            
+            // Embed base64 image directly in SVG (works in ZIP files)
+            const svgString = `<svg xmlns="http://www.w3.org/2000/svg" width="${img.width}" height="${img.height}"><image width="100%" height="100%" href="${imageData}" /></svg>`;
             resolve({ blob: new Blob([svgString], { type: "image/svg+xml" }), name: `${fileName}.svg` });
           } else {
             // Adjust canvas size to image
