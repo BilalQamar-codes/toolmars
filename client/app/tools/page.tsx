@@ -24,12 +24,12 @@ const TOOLS_DATA = [
   },
   {
     id: 2,
-    title: "Global Edge Deploy",
-    desc: "Instant worldwide distribution for your static assets with automated compression.",
-    category: "Optimization",
-    icon: <Zap className="w-6 h-6" />,
-    stats: "99.9% Uptime",
-    href: "/tools/edge-deploy"
+    title: "Image Resizer (Social Media Optimized)",
+    desc: "Resize and optimize your images for perfect display across all social media platforms with one click.",
+    category: "Utility",
+    icon: <Sparkles className="w-6 h-6" />,
+    stats: "Trending",
+    href: "/tools/resize-img"
   },
   {
     id: 3,
