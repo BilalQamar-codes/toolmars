@@ -6,7 +6,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Zap, Menu, X } from "lucide-react";
 import Link from "next/link";
 import "./globals.css";
+import { Metadata } from 'next';
 
+export const metadata: Metadata = {
+  title: {
+    template: '%s | Toolmars',
+    default: 'Toolmars - Free Developer Tools Hub', // Fallback for the home page
+  },
+  description: 'A collection of modern developer tools including slug generators, image converters, and more.',
+  metadataBase: new URL('https://toolmars.com'),
+};
 export default function RootLayout({
   children,
 }: {
@@ -21,6 +30,7 @@ export default function RootLayout({
         ? "text-brand-primary" 
         : "text-brand-muted hover:text-brand-primary"
     }`;
+    
 
   const navLinks = [
     { name: "Home", href: "/" },

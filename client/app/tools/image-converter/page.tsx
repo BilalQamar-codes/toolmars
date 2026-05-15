@@ -37,7 +37,7 @@ useEffect(() => {
       if (item.preview) URL.revokeObjectURL(item.preview);
     });
   };
-}, []); // Empty dependency array ensures this only runs on unmount
+}, []); 
 
   const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);

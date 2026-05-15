@@ -1,12 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
+  trailingSlash: true, // Keep this - it creates the folder structure /tools/index.html
+  
+  // REMOVE: skipTrailingSlashRedirect: true 
+  // Why? This was likely preventing the full generation of the folder-based index files.
+
   images: {
-    unoptimized: true, // This is the critical line for Netlify/Static exports
+    unoptimized: true, 
   },
   devIndicators: {
-    appIsrStatus: false,   // Disables the ISR status indicator
-    buildActivity: false,  // Disables the build activity indicator
+    appIsrStatus: false,
+    buildActivity: false,
   },
 }
 
