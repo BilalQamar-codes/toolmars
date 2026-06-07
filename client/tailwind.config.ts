@@ -6,6 +6,7 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./utils/**/*.{js,ts,jsx,tsx,mdx}", // Added this for your slugify.ts and other helpers
   ],
+  darkMode: "class", // 👈 This enables class-based dark mode switching via next-themes
   theme: {
     extend: {
       // I've kept your brand variables so you don't lose your themeing!

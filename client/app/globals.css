@@ -1,25 +1,37 @@
 @import "tailwindcss";
 
 :root {
-  /* Core Background & Text */
-  --background: #ffffff;
-  --foreground: #171717;
+  /* --- LIGHT THEME (Corporate Office Blue) --- */
+  --background: #f1f5f9;          /* Slate-100 */
+  --foreground: #0f172a;
 
-  /* Brand Colors (The variables we'll use in our components) */
-  --color-brand-bg: #FAFAFA;
-  --color-brand-card: #FFFFFF;
-  --color-brand-border: #E2E8F0;
-  --color-brand-main: #0F172A;
-  --color-brand-muted: #475569;
-  --color-brand-primary: #2563EB;
-  --color-brand-hover: #1D4ED8;
+  --color-brand-bg: #f1f5f9;      
+  --color-brand-card: #ffffff;    
+  --color-brand-border: #e2e8f0;  
+  --color-brand-main: #0f172a;    
+  --color-brand-muted: #475569;   
+  --color-brand-primary: #2563eb; /* Sharp Royal Cobalt Blue */
+  --color-brand-hover: #1d4ed8;   
 }
 
+.dark {
+  --background: #09090b;          /* slate-950 */
+  --foreground: #f8fafc;          /* slate-50 */
+
+  --color-brand-bg: #09090b;
+  --color-brand-card: #121214;    
+  --color-brand-border: #1e293b;  /* slate-800 */
+  --color-brand-main: #f8fafc;    /* Stark high-contrast white labels */
+  
+  /* FIXED: Shifted from slate-400 (#94a3b8) to a brighter slate-300 (#cbd5e1) for premium readability */
+  --color-brand-muted: #cbd5e1;   
+  
+  --color-brand-primary: #6366f1; 
+  --color-brand-hover: #4f46e5;
+}
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  
-  /* Mapping our brand variables so Tailwind recognizes them as classes */
   --color-brand-bg: var(--color-brand-bg);
   --color-brand-card: var(--color-brand-card);
   --color-brand-border: var(--color-brand-border);
@@ -27,27 +39,16 @@
   --color-brand-muted: var(--color-brand-muted);
   --color-brand-primary: var(--color-brand-primary);
   --color-brand-hover: var(--color-brand-hover);
-
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
-/* NOTE: I've commented out the dark mode media query 
-   so your site stays LIGHT even if the user has dark mode enabled on their PC.
-*/
+@variant dark (&:where(.dark, .dark *));
 
 body {
   background: var(--color-brand-bg);
   color: var(--color-brand-main);
-  font-family: Arial, Helvetica, sans-serif;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Replace .banner-class-name with the actual class you find */
-.banner-class-name {
-  display: none !important;
-}
-/* Target the Next.js dev-overlay announcement specifically */
-nextjs-portal {
-  display: none !important;
-}
+nextjs-portal { display: none !important; }
